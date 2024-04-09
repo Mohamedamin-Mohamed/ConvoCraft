@@ -1,6 +1,6 @@
 import { Form, NavLink, Link, redirect, useActionData, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
-import { setIsLoggedIn, setFullName, setEmail, setError, setLoading } from "../Redux/userSlice"
+import { setIsLoggedIn, setFullName, setEmail, setError, setLoading } from '../Redux/userSlice'
 import { IoClose } from "react-icons/io5";
 import { useCallback, useEffect, useState } from "react";
 import { ReactTyped } from "react-typed"

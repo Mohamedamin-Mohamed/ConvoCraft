@@ -2,12 +2,12 @@ import { Link, createBrowserRouter, createRoutesFromElements, Route, Routes, Rou
 import Home from './Components/Home';
 import Contact, { contactHandle } from './Components/Contact';
 import Hero from './Components/Hero';
-import LoginFull, { loginVerify } from './Components/LoginFull';
+import LoginFull, {loginVerify} from './Components/LoginFull';
 import Footer from './Components/Footer';
-import PasswordReset from './Components/PasswordReset';
+import PasswordReset from './Components/PasswordReset'
 import Signup, { createAccount } from './Components/Signup';
-import Chat from './Components/Chat';
-import Success from './Components/Success';
+import Chat from './Components/Chat'
+import Success from './Components/Success'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
