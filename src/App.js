@@ -8,6 +8,7 @@ import PasswordReset from './Components/PasswordReset'
 import Signup, { createAccount } from './Components/Signup';
 import Chat from './Components/Chat'
 import Success from './Components/Success'
+import Chat2 from './Components/Chat2';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,7 +21,7 @@ const router = createBrowserRouter(
  <Route path='auth' element={ <Hero />} />
  <Route path='success' element={ <Success />} />
  
- <Route path='chat' element= { <Chat /> } />
+ <Route path='chat' element= { <Chat2 /> } />
  <Route path='*' element={<Home />} />
  </Route>
 )
