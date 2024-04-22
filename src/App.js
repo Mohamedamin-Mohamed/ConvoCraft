@@ -36,16 +36,3 @@ function App() {
 
 export default App;
 
-
-// <Route>
-    // <Route path='/' element={<Home />} />
-    // <Route path='contact' element={<Contact />} />
-
-    // <Route path='login' element={<LoginFull />} >
-    // <Route path='passwordReset' element={ <PasswordReset />} />
-    // <Route path='auth' element={ <Hero />} />
-    // </Route>
-    // <Route path='signup' action={ createAccount} element= {<Signup />} errorElement={ <LoginFull /> } />
-    // <Route path='chat' element= { <Chat /> } />
-    // <Route path='*' element={<Home />} />
-    // </Route>
