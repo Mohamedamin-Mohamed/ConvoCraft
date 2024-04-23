@@ -7,23 +7,43 @@ import { useMediaQuery } from "react-responsive";
 import { FaArrowUp } from "react-icons/fa";
 import { useState } from "react";
 import Model from "./Model";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+import {useDispatch, useSelector} from 'react-redux'
+import { FaUserAlt } from "react-icons/fa";
+import { LuLogOut } from "react-icons/lu";
+
 
 const Chat2 = () => {
 
     const isMediumScreen = useMediaQuery({minWidth: 768}) // Set the breakpoint for md screens
+    
     const[input, setInput] = useState('')
     const[model, setModel] = useState(false)
+    const[userInfo, setUserInfo] = useState(false)
+
+    const dispatch = useDispatch()
+    const currUser = useSelector(state=>state.userInfo)
   return (
     <div className="flex bg-neutral-900 h-screen relative justify-center">
         
       <div className="lg:flex w-1/4 items-start pt-6 bg-[#171717] hidden">
         <div className="flex-grow flex items-center text-white">
           <SiOpenai size={19} className="ml-7 mr-4 rounded-full " />
-          <p className="text-[#ececec] text-lg">New chat</p>
+          <p className="text-[#ececec] text-sm">New chat</p>
         </div>
         <LuPenSquare size={22} color="white" className="mr-6" />
+        
+        <FaUserAlt size={20} className="absolute top-[750px] left-4" color="white"/> 
+        <button className=" absolute top-[750px] text-sm text-[#ececec] ml-12" onClick={()=> setUserInfo(true)}>{currUser.fullName}</button>
+          {userInfo &&
+           <div className="absolute top-[700px]">
+          <p>{currUser.email}</p>
+          <LuLogOut size={20} />
+          <p>Log out</p>
+        </div>
+}
       </div>
-      <div className=" bg-[#2f2f2f] text-white w-full pt-6 flex justify-center">
+      <div className="flex-grow w-full bg-[#2f2f2f] text-white  pt-6 flex justify-center">
        
         <div className="flex hover:cursor-pointer">
         <CgMenuLeftAlt size={20} color="white" className="mt-1 ml-4 lg:hidden flex mr-18"/>
@@ -54,22 +74,22 @@ const Chat2 = () => {
             <div className="flex flex-wrap justify-center gap-3">
         <div className="md:w-[324px] w-full h-[66px] border border-gray-400 md:px-[12px] md:py-[10px] rounded-lg text-start p-3 hover:bg-[#8b878b67]">
 
-            <h1 className="text-[#ececec]">Recommend a dish</h1>
-            <p className="text-neutral-400">to bring to a potluch</p>
+            <h1 className="text-[#ececec] text-sm">Recommend a dish</h1>
+            <p className="text-neutral-400 text-sm">to bring to a potluch</p>
         </div>
         <div className="md:w-[324px] w-full h-[66px] border border-gray-400 md:px-[12px] md:py-[10px] rounded-lg text-start p-3 hover:bg-[#8b878b67]">
-            <h1 className="text-[#ececec]">Design a programming game</h1>
-            <p className="text-neutral-400">teach basics in a fun way</p>
+            <h1 className="text-[#ececec] text-sm">Design a programming game</h1>
+            <p className="text-neutral-400 text-sm">teach basics in a fun way</p>
         </div>
         </div>
         <div className="md:flex flex-wrap justify-center gap-3 mt-4 hidden">
         <div className="w-[324px] h-[66px] border border-gray-400 px-[12px] py-[10px] rounded-lg text-start p-3 hover:bg-[#8b878b67]">
-            <h1 className="text-[#ececec]">Design a database schema</h1>
-            <p className="text-neutral-400">for an online merch store</p>
+            <h1 className="text-[#ececec] text-sm">Design a database schema</h1>
+            <p className="text-neutral-400 text-sm">for an online merch store</p>
         </div>
         <div className="w-[324px] h-[66px] border border-gray-400 px-[12px] py-[10px] rounded-lg text-start p-3 hover:bg-[#8b878b67]">
-            <h1 className="text-[#ececec]">Plan a 'mental health day'</h1>
-            <p className="text-neutral-400">to help me relax</p>
+            <h1 className="text-[#ececec] text-sm">Plan a 'mental health day'</h1>
+            <p className="text-neutral-400 text-sm">to help me relax</p>
         </div>
         </div>
         <div className="flex mt-4 border border-gray-400 rounded-xl">
@@ -77,6 +97,7 @@ const Chat2 = () => {
         <FaArrowUp size={20} className="mt-4 mr-4 hover:text-white" color={input === '' ? "gray" : "white" }/>
           </div>
           <p className="text-sm text-[#cdcdcd] hover:cursor-text">ConvoCraft can make mistakes. Consider checking important information.</p>
+          
         </button>
         
 
