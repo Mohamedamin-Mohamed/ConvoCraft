@@ -31,7 +31,7 @@ const Navbar = (props)=>{
             case 'login': 
               return <Login />
             default:
-              return <Home />              
+              return<Home />          
         }
     }
     const navBar = props.navBar
