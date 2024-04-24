@@ -23,35 +23,35 @@ const Chat2 = () => {
 
     const dispatch = useDispatch()
     const currUser = useSelector(state=>state.userInfo)
+    
   return (
     <div className="flex bg-neutral-900 h-screen relative justify-center">
-        
       <div className="lg:flex w-1/4 items-start pt-6 bg-[#171717] hidden">
         <div className="flex-grow flex items-center text-white">
           <SiOpenai size={19} className="ml-7 mr-4 rounded-full " />
           <p className="text-[#ececec] text-sm">New chat</p>
         </div>
-        <LuPenSquare size={22} color="white" className="mr-6" />
+        <button><LuPenSquare size={22} color="white" className="mr-6" /></button>
         
-        <FaUserAlt size={20} className="absolute top-[750px] left-4" color="white"/> 
-        <button className=" absolute top-[750px] text-sm text-[#ececec] ml-12" onClick={()=> setUserInfo(true)}>{currUser.fullName}</button>
-          {userInfo &&
+        <FaUserAlt size={20} className="absolute top-[880px] left-4  " color="white"/> 
+        <button className="absolute top-[875px] text-lg text-[#ececec] ml-12 hover:cursor-pointer" onClick={()=> setUserInfo(true)}>{currUser.fullName}</button>
+          {/* {userInfo &&
            <div className="absolute top-[700px]">
           <p>{currUser.email}</p>
           <LuLogOut size={20} />
           <p>Log out</p>
         </div>
-}
+} */}
       </div>
-      <div className="flex-grow w-full bg-[#2f2f2f] text-white  pt-6 flex justify-center">
+      <div className="w-full bg-[#2f2f2f] text-white  pt-6 flex justify-center">
        
         <div className="flex hover:cursor-pointer">
         <CgMenuLeftAlt size={20} color="white" className="mt-1 ml-4 lg:hidden flex mr-18"/>
         <div className="flex lg:ml-0 ml-28 hover:cursor-pointer" >
-          <h1 className="ml-4 mr-1 text-lg flex hover:cursor-pointer" onClick= {()=>setModel(!model) }>ConvoCraft</h1>
+          <h1 className="ml-4 mr-1 text-lg flex " onClick={()=>alert('Hey there')}>ConvoCraft</h1>
           <p className="mr-1 text-[#b4b4b4] text-lg">3.5</p>
-         
           <IoIosArrowDown size={18} className="mt-2" color="gray" />
+         
           </div>
          {model && < Model /> }
         </div>
@@ -62,7 +62,7 @@ const Chat2 = () => {
         </div>
       
       </div>
-      <div className="absolute inset-0 flex  justify-center items-center">
+      <div className=" w-full absolute inset-0 flex  justify-center items-center">
         <div className="flex flex-col justify-center items-center ">
           {/* this div will be used when the user first accesses the chat page, be it first time logged in or user wants to start a new chat */}
           <SiOpenai size={30} color="white" className="mb-5"/>
@@ -94,7 +94,7 @@ const Chat2 = () => {
         </div>
         <div className="flex mt-4 border border-gray-400 rounded-xl">
         <input className="md:w-[670px] w-full h-[52px] p-5 bg-inherit outline-none overflow-hidden" style={{wordWrap: 'break-word', whiteSpace: 'pre-wrap'}}  placeholder="Message ConvoCraft... " onChange={(e)=>setInput(e.target.value)} value={input}/>
-        <FaArrowUp size={20} className="mt-4 mr-4 hover:text-white" color={input === '' ? "gray" : "white" }/>
+        <FaArrowUp size={20} className="mt-4 mr-4" color={input === '' ? "gray" : "white" }/>
           </div>
           <p className="text-sm text-[#cdcdcd] hover:cursor-text">ConvoCraft can make mistakes. Consider checking important information.</p>
           
