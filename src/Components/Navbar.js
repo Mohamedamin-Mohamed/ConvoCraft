@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaPlus } from "react-icons/fa"
 import { IoClose } from "react-icons/io5";
@@ -15,7 +15,7 @@ const Navbar = (props)=>{
     const handleNav = ()=>{
         setNav(!nav)
     }
-    const[display, setDisplay] = useState(false)
+    const[display, setDisplay] = useState('about')
 
     const handleDisplay = (e)=>{
         
@@ -35,9 +35,13 @@ const Navbar = (props)=>{
         }
     }
     const navBar = props.navBar
-    const isMediumScreen = useMediaQuery({ minWidth: 640 }); // Set the breakpoint for md screens
+   const isMediumScreen = useMediaQuery({ minWidth: 640 }); // Set the breakpoint for md screens
 
-    console.log(navBar)
+   useEffect(()=>{
+    
+    console.log(display)
+   }, [display])
+    
     return(
        
         <div className='text-white flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
@@ -48,7 +52,7 @@ const Navbar = (props)=>{
             {navBar.map((list)=>(
                 
                      <li id='list' key={list}>
-                       <NavLink to={list.toLowerCase() === 'home' || list.toLowerCase() === 'login' ? `/${list.toLowerCase()}` : '/'} className='p-4 my-5 border-b border-gray-300' onClick={(e) => handleDisplay(list.toLowerCase())}>{list}</NavLink>
+                       <NavLink to={list.toLowerCase() === 'home' || list.toLowerCase() === 'login' ? `/${list.toLowerCase()}` : '/'} className='p-4 my-5 border-b border-gray-300' onClick={() => handleDisplay(list.toLowerCase())}>{list}</NavLink>
                         
                    </li>
                 ))}
@@ -70,14 +74,14 @@ const Navbar = (props)=>{
                 //  </li>
                      <li id='list' key={list}>
                       
-                       <button className='p-4 my-5 border-b border-gray-300 w-full' onClick={(e)=> handleDisplay(list.toLowerCase())}>{list}</button>
+                       {/* <button className='p-4 my-5 border-b border-gray-300 w-full' onClick={(e)=> setDisplay(list.toLowerCase())}>{list}</button> */}
+                            <button to={list.toLowerCase() === 'home' || list.toLowerCase() === 'login' ? `/${list.toLowerCase()}` : '/'} className='p-4 my-5 border-b border-gray-300 w-full' onClick={() => handleDisplay(list.toLowerCase())}>{list}</button>
+
                    </li>
                 ))}
                 
             </ul>
-            <div>
-                {renderComp()}
-                </div>
+            
             </div>
         </div>
     )
