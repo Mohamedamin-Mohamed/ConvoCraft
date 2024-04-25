@@ -9,7 +9,12 @@ import Signup, { createAccount } from './Components/Signup';
 import Chat from './Components/Chat'
 import Success from './Components/Success'
 import Chat2 from './Components/Chat2';
+import Navbar from './Components/Navbar';
+import FaqQuestions from './Components/FaqQuestions';
+import Faq from './Components/Faq';
 
+const navBar = ['Home', 'About', 'Contact', 'Login']
+const faq= FaqQuestions
 const router = createBrowserRouter(
   createRoutesFromElements(
 <Route>
