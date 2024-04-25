@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa"
 import { IoClose } from "react-icons/io5";
 const Faq = (props)=>{
     const [displayStates, setDisplayStates] = useState(props.faq.map(() => false)); //create an array of length faq thats intialized to false so that each question is hidden at first
-    console.log(displayStates)
+   
 
     const handleDisplay = (index)=>{
         const newDisplayStates = [...displayStates]
@@ -11,7 +11,7 @@ const Faq = (props)=>{
         setDisplayStates(newDisplayStates)
     }
     const faq = props.faq
-    console.log(faq)
+    
     return(
         <div className="text-white bg-gray-600 my-2   max-w-[1620px] mx-5 rounded-md" >
             <div className="grid grid-cols-3 ease-out duration-500">
