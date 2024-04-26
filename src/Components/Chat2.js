@@ -33,8 +33,8 @@ const Chat2 = () => {
         </div>
         <button><LuPenSquare size={22} color="white" className="mr-6" /></button>
         
-        <FaUserAlt size={20} className="absolute top-[880px] left-4  " color="white"/> 
-        <button className="absolute top-[875px] text-lg text-[#ececec] ml-12 hover:cursor-pointer" onClick={()=> setUserInfo(true)}>{currUser.fullName}</button>
+        <FaUserAlt size={20} className="absolute top-[745px] left-4  " color="white"/> 
+        <button className="absolute top-[742px] text-lg text-[#ececec] ml-12 hover:cursor-pointer" onClick={()=> setUserInfo(true)}>{currUser.fullName}</button>
           {/* {userInfo &&
            <div className="absolute top-[700px]">
           <p>{currUser.email}</p>
