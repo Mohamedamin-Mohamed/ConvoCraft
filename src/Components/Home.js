@@ -9,7 +9,7 @@ const Home = ()=>{
     const faq = FaqQuestions 
     return(
         <div>
-            <Navbar navBar={ navBar }/>
+            <Navbar navBar={navBar} />
             <Hero />
             <Faq faq={ faq }/>
             <Footer />
