@@ -25,3 +25,6 @@ Express.js: A web application framework for Node.js, providing a robust set of f
 MySQL: A relational database management system used for storing user data and conversations.
 
 Node.js: A JavaScript runtime environment that executes JavaScript code outside a web browser.
+
+# Contributing
+Contributions are welcome! Please feel free to submit pull requests or open issues for any bugs, feature requests, or suggestions.
