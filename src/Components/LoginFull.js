@@ -1,6 +1,6 @@
 import { Form, NavLink, Link, redirect, useActionData, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
-import { setIsLoggedIn, setFullName, setEmail, setError, setLoading } from "../Redux/userSlice"
+import { setIsLoggedIn, setFullName, setEmail, setError, setLoading, setShowSignupForm } from "../Redux/userSlice"
 import { IoClose } from "react-icons/io5";
 import { useCallback, useEffect, useState } from "react";
 import { ReactTyped } from "react-typed"
@@ -14,26 +14,15 @@ const LoginFull = ()=>{
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [close, setClose] = useState(false)
-    const [showAccount, setShowAccount] = useState(false)
-    
 
     const handleClose = ()=>{
         setClose(!close)
         document.body.style.overflow = ''
     }
     const handleCreateAccount = ()=>{
-        setShowAccount(!showAccount)
+        dispatch(setShowSignupForm(true))
         dispatch(setError(null))
-    }
-    const logUpdatedUser = useCallback(() => {
-        console.log('Updated currUser:', currUser);
-      }, [currUser]); 
-
-    useEffect(()=>{
-       
-        logUpdatedUser(); // Invoke the memoized function
-    }, [currUser])
-
+    } 
      const handleSubmit = async (event)=>{
         event.preventDefault()
          // Dispatch action to set loading state
@@ -118,31 +107,13 @@ const LoginFull = ()=>{
                     <Link className="flex justify-center my-4 text-[#0866ff] hover:underline" onClick={ handlePass} >Forgotten Password</Link>
                     <hr/>
                     <button className="bg-[#42b72a] text-white px-4 font-medium rounded-md py-3 my-4" onClick={handleCreateAccount}>Create a new Account</button>
-                    {showAccount && <Signup />}
+                    {currUser.showSignupForm && <Signup />}
                     </div>
                     </div>
                     
        </div>
      
        </div>
-       {/* <div className="flex bg-white ">
-        <div className="flex-row">
-        <ul>
-            <li>English</li>
-            <li>Espanol</li>
-            <li>Français (France)</li>
-            <li>中文(简体)</li>
-            <li>العربية</li>
-            <li>Português (Brasil)</li>
-            <li>Italiano</li>
-            <li>한국어</li>
-            <li>Deutsch</li>
-            <li>हिन्दी</li>
-            <li>日本語</li>
-            <FaPlus size={20} className="p-4 border" /> 
-        </ul>
-        </div>
-       </div> */}
        </div>
        
     )
