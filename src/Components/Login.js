@@ -24,13 +24,9 @@ const Login = ()=>{
     const handleCreateAccount = ()=>{
         setShowAccount(!showAccount)
     }
-    const logUpdatedUser = useCallback(() => {
-        console.log('Updated currUser:', currUser);
-      }, [currUser]); 
+    
 
-    useEffect(()=>{
-        logUpdatedUser(); // Invoke the memoized function
-    }, [currUser])
+   
     useEffect(() => {
         const handleResize = () => {
           setWindowWidth(window.innerWidth);

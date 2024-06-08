@@ -3,9 +3,10 @@ import { useEffect, useState } from "react"
 import { Form, redirect, useNavigate } from "react-router-dom"
 import DateOfBirthInput from "./DateOfBirthInput"
 import { useDispatch, useSelector } from "react-redux"
-import { setLoading } from "../Redux/userSlice"
+import { setLoading, setShowSignupForm } from "../Redux/userSlice"
 import ClipLoader from "react-spinners/ClipLoader"
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const Signup = ()=>{
     const currUser = useSelector(state => state.userInfo)
     const dispatch = useDispatch()
@@ -43,16 +44,33 @@ const Signup = ()=>{
         dispatch(setLoading(true)) //awaiting response from the server
         const response = await createAccount({request: formData})
         dispatch(setLoading(false)) //response received
+        const data = await response.json();
+        console.log('here is the response', response)
+        const text = data.message
+
         console.log(response.status, 'create account status')
-       if(response.status === 201) navigate('/login')
+       if(response.status === 201) {
+        toast.success('Account created succesfully', {
+            onClose: ()=>{
+                dispatch(setShowSignupForm(false))
+            }
+        })
+       }
+       else if (response. status === 409){
+        console.log(response.status, text)
+        toast.error(message, {
+            onClose: ()=>{
+                dispatch(setShowSignupForm(fals))
+            }
+        })
+       }
        
        else navigate('/')
     }
     return(
         <div className={ close ? 'hidden': 'fixed flex justify-center inset-0 items-center text-black backdrop-blur'}>
-
+             <ToastContainer position="top-center" />
             <div className="text-black rounded-lg bg-white w-[450px] text-center border h-[620px] ease-in-out duration-500">
-
             <IoClose size={30} className="ml-auto text-gray-700 hover:cursor-pointer" onClick={ handleClose }/>
                <div className="ml-5">
                 <h1 className="flex font-bold text-3xl">Sign Up</h1>
@@ -133,4 +151,3 @@ export const createAccount = async ({ request })=>{
   return response
     
 }
-

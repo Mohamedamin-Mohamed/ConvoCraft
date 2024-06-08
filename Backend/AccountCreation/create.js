@@ -30,12 +30,24 @@ router.post('/account_creation', async(req, res)=>{
     
     const body = req.body
     console.log('Body is ', body)
-    const query = `insert into ${dbName} (FirstName, Surname, Email, Password, Gender, DOB) values(?,?,?,?,?,?)`
+
+    let sqlQuery = `SELECT * FROM ${dbName} WHERE Email = ?`;
+    let queryParams = [body.email]
+    try{
+    let result = await mysqlQuery(sqlQuery, queryParams)
+    // if(result.length > 0){
+    //     res.status(409).json({message: 'Account already exists'})
+    // }
+}
+    catch(err){
+        res.status(409).json({message: 'Account already exists'})
+    }
+    sqlQuery = `insert into ${dbName} (FirstName, Surname, Email, Password, Gender, DOB) values(?,?,?,?,?,?)`
 
     const hashPassword = await bcrypt.hash(body.password, 10)
-    console.log(hashPassword)
-    const queryParams = [body.firstName, body.surname, body.email, hashPassword, body.gender, `${body.year}-${monthsMapping[body.month]}-${body.day}`]
-    const result = await mysqlQuery(query, queryParams);
+
+     queryParams = [body.firstName, body.surname, body.email, hashPassword, body.gender, `${body.year}-${monthsMapping[body.month]}-${body.day}`]
+     result = await mysqlQuery(sqlQuery, queryParams);
     if(result.affectedRows > 0){ //query okay
         try{
             await nodeMailer(body.email, body.firstName, false)
