@@ -8,33 +8,33 @@ import { FaArrowUp } from "react-icons/fa";
 import { useState } from "react";
 import Model from "./Model";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import { FaUserAlt } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
 
 
 const Chat2 = () => {
 
-    const isMediumScreen = useMediaQuery({minWidth: 768}) // Set the breakpoint for md screens
+   const isMediumScreen = useMediaQuery({minWidth: 768}) // Set the breakpoint for md screens
     
     const[input, setInput] = useState('')
     const[model, setModel] = useState(false)
     const[userInfo, setUserInfo] = useState(false)
 
-    const dispatch = useDispatch()
-    const currUser = useSelector(state=>state.userInfo)
+   
+   const currUser = useSelector(state=>state.userInfo)
     
   return (
-    <div className="flex bg-neutral-900 h-screen relative justify-center">
+    <div className="flex bg-neutral-900 h-screen text-white">
       <div className="lg:flex w-1/4 items-start pt-6 bg-[#171717] hidden">
-        <div className="flex-grow flex items-center text-white">
+        <div className="flex-grow flex items-center">
           <SiOpenai size={19} className="ml-7 mr-4 rounded-full " />
           <p className="text-[#ececec] text-sm">New chat</p>
         </div>
-        <button><LuPenSquare size={22} color="white" className="mr-6" /></button>
+        <LuPenSquare size={22} color="white" className="mr-6" />
         
         <FaUserAlt size={20} className="absolute top-[745px] left-4  " color="white"/> 
-        <button className="absolute top-[742px] text-lg text-[#ececec] ml-12 hover:cursor-pointer" onClick={()=> setUserInfo(true)}>{currUser.fullName}</button>
+        <button className="absolute top-[742px] text-lg text-[#ececec] ml-12 hover:cursor-pointer" onClick={()=>setUserInfo(true)}>{currUser.fullName}</button>
           {/* {userInfo &&
            <div className="absolute top-[700px]">
           <p>{currUser.email}</p>
@@ -45,10 +45,10 @@ const Chat2 = () => {
       </div>
       <div className="w-full bg-[#2f2f2f] text-white  pt-6 flex justify-center">
        
-        <div className="flex hover:cursor-pointer">
+        <div className="flex ">
         <CgMenuLeftAlt size={20} color="white" className="mt-1 ml-4 lg:hidden flex mr-18"/>
         <div className="flex lg:ml-0 ml-28 hover:cursor-pointer" >
-          <h1 className="ml-4 mr-1 text-lg flex " onClick={()=>alert('Hey there')}>ConvoCraft</h1>
+          <h1 className="ml-4 mr-1 text-lg flex hover:cursor-pointer" onClick={()=>alert('Hey there')}>ConvoCraft</h1>
           <p className="mr-1 text-[#b4b4b4] text-lg">3.5</p>
           <IoIosArrowDown size={18} className="mt-2" color="gray" />
          
@@ -56,7 +56,7 @@ const Chat2 = () => {
          {model && < Model /> }
         </div>
         <div className="ml-auto">
-           {isMediumScreen ? <LuShare size={25} className="mr-8" /> : <LuPenSquare size={25} className="mr-8" />} { /* if screen size is less than md, display the LuPenSquare component so that the user can 
+           {isMediumScreen ? <LuShare size={25} className="mr-8 hover:cursor-pointer" /> : <LuPenSquare size={25} className="mr-8 hover:cursor-pointer" />} { /* if screen size is less than md, display the LuPenSquare component so that the user can 
            create a new chat else display LuShare component so that the user can export their chat*/}
        
         </div>
@@ -64,7 +64,7 @@ const Chat2 = () => {
       </div>
       <div className=" w-full absolute inset-0 flex  justify-center items-center">
         <div className="flex flex-col justify-center items-center ">
-          {/* this div will be used when the user first accesses the chat page, be it first time logged in or user wants to start a new chat */}
+          {/* this div will be used when the user first accesses the chat page, be it first time the user is logged in or when the user wants to start a new chat */}
           <SiOpenai size={30} color="white" className="mb-5"/>
           <h1 className="text-white text-2xl">How can I help you today?</h1>
         </div>
