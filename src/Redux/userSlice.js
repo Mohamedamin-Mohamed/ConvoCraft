@@ -5,7 +5,8 @@ const initialState = {
     fullName: null,
     email: null,
     error: null,
-    loading: false
+    loading: false,
+    showSignupForm: false
 }
 
 const userSlice = createSlice ({
@@ -26,9 +27,12 @@ const userSlice = createSlice ({
         }),
         setLoading: (state, action)=>({
             ...state, loading: action.payload
+        }),
+        setShowSignupForm: (state, action) =>({
+            ...state, showSignupForm: action.payload
         })
     }
 }
 )
-export const { setIsLoggedIn, setFullName, setEmail, setError, setLoading} = userSlice.actions
+export const { setIsLoggedIn, setFullName, setEmail, setError, setLoading, setShowSignupForm} = userSlice.actions
 export default userSlice.reducer
