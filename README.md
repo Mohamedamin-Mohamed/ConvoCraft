@@ -14,10 +14,14 @@ Responsive Design: The application is designed to be responsive, providing an op
 # Tech Stack
 #### Frontend:
 React: A JavaScript library for building user interfaces.
+
 Redux: A predictable state container for managing application state.
+
 Tailwind CSS: A utility-first CSS framework for quickly building custom designs.
 
 #### Backend:
 Express.js: A web application framework for Node.js, providing a robust set of features for building web and mobile applications.
+
 MySQL: A relational database management system used for storing user data and conversations.
+
 Node.js: A JavaScript runtime environment that executes JavaScript code outside a web browser.
