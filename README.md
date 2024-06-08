@@ -8,7 +8,7 @@ Chat Interface: Users can chat with ConvoCraft, which utilizes ChatGPT to genera
 Persistent Data Storage: Conversations and user data are stored in a MySQL database, ensuring data persistence.
 Responsive Design: The application is designed to be responsive, providing an optimal viewing experience across a wide range of devices.
 
-#Tech Stack
+# Tech Stack
 
 # Frontend:
 React: A JavaScript library for building user interfaces.
