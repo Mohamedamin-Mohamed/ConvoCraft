@@ -1,4 +1,4 @@
-##ConvoCraft
+#ConvoCraft
 
 ConvoCraft is a full-stack chatbot application that replicates Facebook's login functionalities and integrates a chat interface powered by ChatGPT. It's built using React, Redux, Tailwind CSS, Express.js, MySQL, and Node.js.
 
